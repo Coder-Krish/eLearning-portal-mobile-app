@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.StartActivity"
+    android:background="@color/Seashell"
+    >
+
+<androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/DodgerBlue"
+    android:id="@+id/toolbar"
+    >
+<!--           <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/avatar"
+                />-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif"
+                android:gravity="end"
+                android:padding="5dp"
+                android:text="@string/app_name"
+                android:textAlignment="textEnd"
+                android:textColor="@color/Seashell"
+
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+</androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fragment_container"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+
+
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:menu="@menu/nav_menu"
+            android:background="@color/Seashell"
+            app:itemIconTint="@color/DodgerBlue"
+            android:id="@+id/bottom_nav_bar"
+            android:layout_alignParentBottom="true"
+            >
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</RelativeLayout>

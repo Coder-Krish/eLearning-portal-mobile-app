@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".activities.EmailVerification">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tBrandName"
+        android:text="@string/app_name"
+        android:background="@color/DodgerBlue"
+        android:textColor="@color/Seashell"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:fontFamily="sans-serif"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tEmailVerification"
+        android:text="Click Me To Verify Your Email"
+        android:layout_below="@+id/tBrandName"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/Crimson"
+        android:textColor="@color/Seashell"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:fontFamily="sans-serif"
+        android:clickable="true"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnVerified"
+        android:layout_below="@+id/tEmailVerification"
+        android:layout_marginTop="50dp"
+        android:text="Email Verified Click Me to goto login page"
+        android:textColor="@color/Seashell"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:backgroundTint="@color/ForestGreen"
+        app:cornerRadius="12dp"
+        android:padding="10dp"
+
+        />
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_marginTop="100dp"
+        android:id="@+id/progressBar"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:visibility="invisible"
+        />
+
+
+</RelativeLayout>

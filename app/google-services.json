@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "244675199729",
+    "firebase_url": "https://nightbeforeexam-7cd84.firebaseio.com",
+    "project_id": "nightbeforeexam-7cd84",
+    "storage_bucket": "nightbeforeexam-7cd84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244675199729:android:93fda311ff55c3286e9f50",
+        "android_client_info": {
+          "package_name": "np.com.krishna.nightbeforeexam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244675199729-p51rcfpb7kbnnov75b5eimd9uopk5i5l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.krishna.nightbeforeexam",
+            "certificate_hash": "edf706d788c9555b70ca6cc1fb08fb5ca0c2d3e1"
+          }
+        },
+        {
+          "client_id": "244675199729-ujgbpd53j851utmc118rspce51ehvpov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgdQ2ILqcIkSssBej0VUm0RlXuge9FyLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244675199729-ujgbpd53j851utmc118rspce51ehvpov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

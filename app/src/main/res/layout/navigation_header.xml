@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/nav_header_gradient"
+    tools:context=".activities.StartActivity"
+    android:id="@+id/nav_header"
+    >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/avatar"
+        android:id="@+id/nav_header_profile"
+       android:scaleType="centerCrop"
+
+      android:layout_centerHorizontal="true"
+
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_header_username"
+        android:layout_below="@+id/nav_header_profile"
+        android:text="username"
+        android:textSize="20sp"
+        android:textColor="@color/White"
+
+        android:layout_centerHorizontal="true"
+
+        />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_header_userEmail"
+        android:layout_below="@+id/nav_header_username"
+        android:text="email@gmail.com"
+        android:textSize="15sp"
+        android:textColor="@color/White"
+
+        android:layout_centerHorizontal="true"
+
+        />
+
+
+</RelativeLayout>

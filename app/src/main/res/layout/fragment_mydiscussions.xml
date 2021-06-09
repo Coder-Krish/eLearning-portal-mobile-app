@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fragment_container"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/discussionsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            tools:layout_editor_absoluteX="8dp">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </FrameLayout>
+</LinearLayout>
