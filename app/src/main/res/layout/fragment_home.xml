@@ -6,6 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/LightYellow"
     android:id="@+id/nav_home">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeToRefresh"
+
+        >
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,13 +20,84 @@
         android:layout_below="@+id/toolbar"
         android:id="@+id/fragment_container"
         >
-        <ScrollView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="you can express yourself here..."
+                android:textColorHint="@color/LightGrey"
+                app:boxStrokeColor="@color/Crimson"
+                app:hintTextColor="@color/Crimson"
+                android:layout_margin="10dp"
+                android:id="@+id/etLayoutPassword"
+                android:layout_below="@+id/etPostContent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/postContent"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chooseImage"
+                    android:src="@drawable/add"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/DeepSkyBlue"
+                   android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnPost"
+                    android:text="POST"
+                    android:textColor="@color/Seashell"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginLeft="190dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:backgroundTint="@color/DodgerBlue"
+                    app:cornerRadius="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/chooseImage"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+       <!-- <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+-->
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="140dp"
                 >
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -30,8 +108,10 @@
                     tools:layout_editor_absoluteX="8dp">
                 </androidx.recyclerview.widget.RecyclerView>
 
+
             </LinearLayout>
-        </ScrollView>
+
+      <!--  </ScrollView>-->
 
     </FrameLayout>
 
@@ -45,9 +125,6 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/add"
         android:backgroundTint="@color/DodgerBlue"
-
-
-
         />
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

@@ -5,8 +5,11 @@ import com.google.gson.GsonBuilder;
 
 import np.com.krishna.nightbeforeexam.interfaces.AuthenticationApiInterface;
 import np.com.krishna.nightbeforeexam.interfaces.DiscussionsInterface;
+import np.com.krishna.nightbeforeexam.interfaces.FollowApiInterface;
+import np.com.krishna.nightbeforeexam.interfaces.NotesApiInterface;
 import np.com.krishna.nightbeforeexam.interfaces.PostsInterface;
 import np.com.krishna.nightbeforeexam.interfaces.ProfileInterface;
+import np.com.krishna.nightbeforeexam.interfaces.SubjectsApiInterface;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -49,6 +52,21 @@ public class ApiClient {
     public static DiscussionsInterface getDiscusionsService(){
         DiscussionsInterface discussionsInterface = getRetrofit().create(DiscussionsInterface.class);
         return discussionsInterface;
+    }
+
+    public static SubjectsApiInterface getSubjectsService(){
+        SubjectsApiInterface subjectsApiInterface = getRetrofit().create(SubjectsApiInterface.class);
+        return subjectsApiInterface;
+    }
+
+    public static NotesApiInterface getNotesService(){
+        NotesApiInterface notesApiInterface = getRetrofit().create(NotesApiInterface.class);
+        return notesApiInterface;
+    }
+
+    public static FollowApiInterface getFollowServices(){
+        FollowApiInterface followApiInterface = getRetrofit().create(FollowApiInterface.class);
+        return  followApiInterface;
     }
 
 }

@@ -6,12 +6,14 @@ import np.com.krishna.nightbeforeexam.models.LoginRequest;
 import np.com.krishna.nightbeforeexam.models.LoginResponse;
 import np.com.krishna.nightbeforeexam.models.SignupRequest;
 import np.com.krishna.nightbeforeexam.models.SignupResponse;
+import np.com.krishna.nightbeforeexam.models.User;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import java.util.List;
 
 public interface AuthenticationApiInterface {
 
@@ -21,7 +23,7 @@ public interface AuthenticationApiInterface {
 
 
     @POST("auth/signin")
-    Call<LoginResponse> userLogin(@Body LoginRequest loginRequest);
+    Call<User> userLogin(@Body LoginRequest loginRequest);
 
     @POST("auth/signup")
     Call<SignupResponse> userRegister(@Body SignupRequest signupRequest);

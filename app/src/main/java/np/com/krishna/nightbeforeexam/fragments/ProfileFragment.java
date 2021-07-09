@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,15 +31,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.ContentValues.TAG;
+
 public class ProfileFragment extends Fragment {
 
    private TextView loggedInUserNameTV;
    private TextView fullnameTV,follower,following;
    private TextView loadUploadDirTV;
    private ImageView profilePicDisplay;
-   Bitmap bitmap;
-   private  ResponseBody body;
-   private String imgUrl;
+   //private String imgUrl;
    private String token;
    private Long userId;
 
@@ -140,6 +141,31 @@ public class ProfileFragment extends Fragment {
         /*tab layout ends*/
 
 
+        follower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: Follower");
+
+                FollowerAndFollowingFragment followerAndFollowingFragment = new FollowerAndFollowingFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("follow","follower");
+                followerAndFollowingFragment.setArguments(bundle);
+                getChildFragmentManager().beginTransaction().add(R.id.fragment_container, followerAndFollowingFragment).addToBackStack(null).commit();
+
+            }
+        });
+
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: Following");
+                FollowerAndFollowingFragment followerAndFollowingFragment = new FollowerAndFollowingFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("follow","following");
+                followerAndFollowingFragment.setArguments(bundle);
+                getChildFragmentManager().beginTransaction().add(R.id.fragment_container, followerAndFollowingFragment).addToBackStack(null).commit();
+            }
+        });
 
 
 

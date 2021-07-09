@@ -19,6 +19,10 @@ public class Comments {
         this.active = active;
     }
 
+    public Comments() {
+
+    }
+
     public Long getId() {
         return id;
     }

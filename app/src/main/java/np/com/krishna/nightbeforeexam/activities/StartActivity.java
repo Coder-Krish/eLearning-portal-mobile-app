@@ -129,27 +129,27 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         switch (item.getItemId()){
             case R.id.profile:
                 //Toast.makeText(getApplicationContext(), "Profile fragment", Toast.LENGTH_SHORT).show();
-               getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
+               getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).addToBackStack(null).commit();
                 break;
             case R.id.notes:
                // Toast.makeText(getApplicationContext(), "notes fragment", Toast.LENGTH_SHORT).show();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new NotesFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new NotesFragment()).addToBackStack(null).commit();
                 break;
             case R.id.discussions:
                 // Toast.makeText(getApplicationContext(), "notes fragment", Toast.LENGTH_SHORT).show();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DiscussionFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DiscussionFragment()).addToBackStack(null).commit();
                 break;
             case R.id.settings:
                // Toast.makeText(getApplicationContext(), "settings fragment", Toast.LENGTH_SHORT).show();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SettingsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SettingsFragment()).addToBackStack(null).commit();
                 break;
             case R.id.help:
                // Toast.makeText(getApplicationContext(), "help fragment", Toast.LENGTH_SHORT).show();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HelpFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HelpFragment()).addToBackStack(null).commit();
                 break;
             case R.id.about:
                // Toast.makeText(getApplicationContext(), "about fragment", Toast.LENGTH_SHORT).show();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AboutFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AboutFragment()).addToBackStack(null).commit();
                 break;
             case R.id.logout:
                 //Toast.makeText(getApplicationContext(), "logout fragment", Toast.LENGTH_SHORT).show()
@@ -191,12 +191,12 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
                             selectedFragmet = new SearchFragment();
                             break;
                         case R.id.notification_nav:
-                            selectedFragmet = new NotificationFragment();
+                            selectedFragmet = new DiscussionFragment();
                             break;
 
                     }
 
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragmet).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragmet).addToBackStack(null).commit();
                     return true;
                 }
 

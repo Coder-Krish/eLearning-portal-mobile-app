@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import np.com.krishna.nightbeforeexam.ApiClients.ApiClient;
 import np.com.krishna.nightbeforeexam.R;
+import np.com.krishna.nightbeforeexam.adapters.AllPostsRecyclerAdapter;
 import np.com.krishna.nightbeforeexam.adapters.MyPostsRecyclerAdapter;
 import np.com.krishna.nightbeforeexam.interfaces.PostsInterface;
 import np.com.krishna.nightbeforeexam.interfaces.ProfileInterface;
@@ -30,10 +31,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyPostsFragment extends Fragment {
+public class MyPostsFragment extends Fragment implements AllPostsRecyclerAdapter.RecyclerViewAllPostsClickListener {
    private static RecyclerView recyclerView;
-   private MyPostsRecyclerAdapter myPostsRecyclerAdapter;
+   //private MyPostsRecyclerAdapter myPostsRecyclerAdapter;
    private ArrayList<Posts> posts;
+   private AllPostsRecyclerAdapter allPostsRecyclerAdapter;
+
+   private AllPostsRecyclerAdapter.RecyclerViewAllPostsClickListener recyclerViewAllPostsClickListener;
+
 
 
 
@@ -76,9 +81,9 @@ public class MyPostsFragment extends Fragment {
                     if (response != null) {
 
                         posts = new ArrayList<>(response.body());
-
-                        myPostsRecyclerAdapter = new MyPostsRecyclerAdapter(getContext(), posts);
-                        recyclerView.setAdapter(myPostsRecyclerAdapter);
+                        setOnClickListener();
+                        allPostsRecyclerAdapter = new AllPostsRecyclerAdapter(getContext(), posts,recyclerViewAllPostsClickListener);
+                        recyclerView.setAdapter(allPostsRecyclerAdapter);
                     }else{
                         Toast.makeText(getActivity(), "No Data found", Toast.LENGTH_SHORT).show();
                     }
@@ -96,5 +101,22 @@ public class MyPostsFragment extends Fragment {
 
     }
 
+    private void setOnClickListener() {
+        recyclerViewAllPostsClickListener = new AllPostsRecyclerAdapter.RecyclerViewAllPostsClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                PostDetailsFragment postDetailsFragment = new PostDetailsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("postData",posts.get(position));
+                postDetailsFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,postDetailsFragment).addToBackStack(null).commit();
+            }
+        };
+    }
 
+
+    @Override
+    public void onClick(View v, int position) {
+        //Log.d(TAG, "onClick: Clicked");
+    }
 }

@@ -29,17 +29,19 @@ public class MyDiscussionsRecyclerAdapter extends RecyclerView.Adapter<MyDiscuss
 
     Context context;
     ArrayList<DiscussionForum> discussions;
+    private RecyclerViewDiscussionsClickListener recyclerViewDiscussionsClickListener;
 
-    public MyDiscussionsRecyclerAdapter(Context context, ArrayList<DiscussionForum> discussions){
+    public MyDiscussionsRecyclerAdapter(Context context, ArrayList<DiscussionForum> discussions, RecyclerViewDiscussionsClickListener recyclerViewDiscussionsClickListener){
         this.discussions = discussions;
         this.context = context;
+        this.recyclerViewDiscussionsClickListener = recyclerViewDiscussionsClickListener;
     }
 
     @NonNull
     @Override
     public MyDiscussionsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_my_discussions, parent, false);
-        MyDiscussionsViewHolder myDiscussionsViewHolder = new MyDiscussionsViewHolder(view);
+        MyDiscussionsViewHolder myDiscussionsViewHolder = new MyDiscussionsViewHolder(view, recyclerViewDiscussionsClickListener);
         return myDiscussionsViewHolder;
     }
 
@@ -58,8 +60,8 @@ public class MyDiscussionsRecyclerAdapter extends RecyclerView.Adapter<MyDiscuss
 
         SharedPreferences sharedPreferences = this.context.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         String token = sharedPreferences.getString("token","");
-        Long userId = sharedPreferences.getLong("id",0);
-
+        //Long userId = sharedPreferences.getLong("id",0);
+        Long userId = discussions.get(position).getUser().getId();
         Call<ProfilePicture> call = ApiClient.getProfileService().loadProfilePicture(token,userId);
         call.enqueue(new Callback<ProfilePicture>() {
             @Override
@@ -100,16 +102,17 @@ public class MyDiscussionsRecyclerAdapter extends RecyclerView.Adapter<MyDiscuss
         return discussions.size();
     }
 
-    public class MyDiscussionsViewHolder extends RecyclerView.ViewHolder{
+    public class MyDiscussionsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         CardView myPostsCardView;
         TextView postedByTV;
         TextView postedDate;
         TextView content;
         ImageView contentImageView;
         ImageView userProfileImage;
+        RecyclerViewDiscussionsClickListener mRecyclerViewDiscussionsClickListener;
 
 
-        public MyDiscussionsViewHolder(@NonNull View itemView) {
+        public MyDiscussionsViewHolder(@NonNull View itemView, RecyclerViewDiscussionsClickListener mRecyclerViewDiscussionsClickListener) {
             super(itemView);
             myPostsCardView = itemView.findViewById(R.id.myPostsCardView);
             postedByTV = itemView.findViewById(R.id.postedBy);
@@ -117,8 +120,22 @@ public class MyDiscussionsRecyclerAdapter extends RecyclerView.Adapter<MyDiscuss
             content = itemView.findViewById(R.id.content);
             contentImageView = itemView.findViewById(R.id.contentImage);
             userProfileImage = itemView.findViewById(R.id.userProfileImage);
+            this.mRecyclerViewDiscussionsClickListener = mRecyclerViewDiscussionsClickListener;
+
+            itemView.setOnClickListener(this);
+
+
 
         }
+
+        @Override
+        public void onClick(View v) {
+            mRecyclerViewDiscussionsClickListener.onclick(itemView, getAdapterPosition());
+        }
+    }
+
+    public interface RecyclerViewDiscussionsClickListener{
+        void onclick(View v, int position);
     }
 
 }

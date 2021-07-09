@@ -59,7 +59,8 @@ public class MyPostsRecyclerAdapter extends RecyclerView.Adapter<MyPostsRecycler
 
         SharedPreferences sharedPreferences = this.context.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         String token = sharedPreferences.getString("token","");
-        Long userId = sharedPreferences.getLong("id",0);
+        //Long userId = sharedPreferences.getLong("id",0);
+        Long userId = posts.get(position).getUser().getId();
 
         Call<ProfilePicture> call = ApiClient.getProfileService().loadProfilePicture(token,userId);
         call.enqueue(new Callback<ProfilePicture>() {

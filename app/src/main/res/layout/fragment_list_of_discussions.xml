@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/LightYellow"
+    android:id="@+id/fragment_list_of_discussions">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fragment_container"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/cardview_dark_background"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="share your views here..."
+                android:textColorHint="@color/LightGrey"
+                app:boxStrokeColor="@color/Crimson"
+                app:hintTextColor="@color/Crimson"
+                android:layout_margin="10dp"
+                android:id="@+id/etLayoutPassword"
+                android:layout_below="@+id/etDiscussionContent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/discussionContent"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/selectImage"
+                    android:src="@drawable/add"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/DeepSkyBlue"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnCreate"
+                    android:text="CREATE"
+                    android:textColor="@color/Seashell"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginLeft="190dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:backgroundTint="@color/DodgerBlue"
+                    app:cornerRadius="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/selectImage"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="140dp"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listOfDiscussions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                tools:layout_editor_absoluteX="8dp">
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</RelativeLayout>

@@ -13,14 +13,13 @@
         android:layout_below="@+id/toolbar"
         android:id="@+id/fragment_container"
         >
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -34,55 +33,18 @@
                     android:layout_marginRight="30dp"
                     android:id="@+id/facultyDisplay"
                     />
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etLayoutSemester"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/semesterRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Semesters"
-                    android:layout_below="@+id/etLayoutAddress"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:textColorHint="@color/LightGrey"
-                    app:boxStrokeColor="@color/Crimson"
-
-
-                    >
-
-                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                        android:id="@+id/etSemester"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        tools:ignore="KeyboardInaccessibleWidget"
-                        android:editable="false"
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    tools:layout_editor_absoluteX="8dp">
+                </androidx.recyclerview.widget.RecyclerView>
 
 
             </LinearLayout>
-        </ScrollView>
+
 
     </FrameLayout>
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/btnFloating"-->
-<!--        android:layout_margin="30dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:src="@drawable/chat"-->
-<!--        android:backgroundTint="@color/DodgerBlue"-->
-
-
-
-<!--        />-->
-
-
 
 </RelativeLayout>

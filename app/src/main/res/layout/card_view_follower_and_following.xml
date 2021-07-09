@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    app:cardCornerRadius="5dp"
+    android:id="@+id/followAndFollowing"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingLeft="5dp"
+
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            android:textAlignment="textStart"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:textColor="@color/Black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/userImage"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

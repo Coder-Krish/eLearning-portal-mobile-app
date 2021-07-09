@@ -1,6 +1,9 @@
 package np.com.krishna.nightbeforeexam.models;
 
-public class DiscussionForum {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DiscussionForum implements Parcelable {
     private Long id;
 
     private String content;
@@ -33,6 +36,38 @@ public class DiscussionForum {
         this.user = user;
         this.active = active;
         this.programOfDiscussion = programOfDiscussion;
+    }
+
+    protected DiscussionForum(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        content = in.readString();
+        fileName = in.readString();
+        fileType = in.readString();
+        postedBy = in.readString();
+        postedAt = in.readString();
+        uploadDir = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
+        active = in.readByte() != 0;
+    }
+
+    public static final Creator<DiscussionForum> CREATOR = new Creator<DiscussionForum>() {
+        @Override
+        public DiscussionForum createFromParcel(Parcel in) {
+            return new DiscussionForum(in);
+        }
+
+        @Override
+        public DiscussionForum[] newArray(int size) {
+            return new DiscussionForum[size];
+        }
+    };
+
+    public DiscussionForum() {
+
     }
 
     public Long getId() {
@@ -121,5 +156,28 @@ public class DiscussionForum {
 
     public void setProgramOfDiscussion(Programs programOfDiscussion) {
         this.programOfDiscussion = programOfDiscussion;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(content);
+        dest.writeString(fileName);
+        dest.writeString(fileType);
+        dest.writeString(postedBy);
+        dest.writeString(postedAt);
+        dest.writeString(uploadDir);
+        dest.writeParcelable(user, flags);
+        dest.writeByte((byte) (active ? 1 : 0));
     }
 }

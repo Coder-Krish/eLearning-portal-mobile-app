@@ -1,6 +1,9 @@
 package np.com.krishna.nightbeforeexam.models;
 
-public class Posts {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Posts implements Parcelable {
     private Long id;
 
     private String content;
@@ -29,6 +32,38 @@ public class Posts {
         this.active = active;
         this.user = user;
     }
+
+    public Posts() {
+
+    }
+
+    protected Posts(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        content = in.readString();
+        fileName = in.readString();
+        fileType = in.readString();
+        postedBy = in.readString();
+        postedTime = in.readString();
+        uploadDir = in.readString();
+        active = in.readByte() != 0;
+        user = in.readParcelable(User.class.getClassLoader());
+    }
+
+    public static final Creator<Posts> CREATOR = new Creator<Posts>() {
+        @Override
+        public Posts createFromParcel(Parcel in) {
+            return new Posts(in);
+        }
+
+        @Override
+        public Posts[] newArray(int size) {
+            return new Posts[size];
+        }
+    };
 
     public Long getId() {
         return id;
@@ -100,5 +135,28 @@ public class Posts {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(content);
+        dest.writeString(fileName);
+        dest.writeString(fileType);
+        dest.writeString(postedBy);
+        dest.writeString(postedTime);
+        dest.writeString(uploadDir);
+        dest.writeByte((byte) (active ? 1 : 0));
+        dest.writeParcelable(user, flags);
     }
 }

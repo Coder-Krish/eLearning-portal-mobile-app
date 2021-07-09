@@ -3,6 +3,7 @@ package np.com.krishna.nightbeforeexam.fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyDiscussionsFragment extends Fragment {
+
+import static android.content.ContentValues.TAG;
+
+public class MyDiscussionsFragment extends Fragment implements MyDiscussionsRecyclerAdapter.RecyclerViewDiscussionsClickListener {
 
     private static RecyclerView recyclerView;
     private MyDiscussionsRecyclerAdapter myDiscussionsRecyclerAdapter;
     private ArrayList<DiscussionForum> discussions;
+    private MyDiscussionsRecyclerAdapter.RecyclerViewDiscussionsClickListener recyclerViewDiscussionsClickListener;
 
     public MyDiscussionsFragment(){
 
@@ -65,8 +70,8 @@ public class MyDiscussionsFragment extends Fragment {
                     if (response != null) {
 
                         discussions = new ArrayList<>(response.body());
-
-                        myDiscussionsRecyclerAdapter = new MyDiscussionsRecyclerAdapter(getContext(), discussions);
+                        setOnClickListener();
+                        myDiscussionsRecyclerAdapter = new MyDiscussionsRecyclerAdapter(getContext(), discussions, recyclerViewDiscussionsClickListener);
                         recyclerView.setAdapter(myDiscussionsRecyclerAdapter);
                     }else{
                         Toast.makeText(getActivity(), "No Data found", Toast.LENGTH_SHORT).show();
@@ -84,4 +89,22 @@ public class MyDiscussionsFragment extends Fragment {
         });
     }
 
+    private void setOnClickListener() {
+        recyclerViewDiscussionsClickListener = new MyDiscussionsRecyclerAdapter.RecyclerViewDiscussionsClickListener() {
+            @Override
+            public void onclick(View v, int position) {
+                DiscussionDetailsFragment discussionDetailsFragment = new DiscussionDetailsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("data",discussions.get(position));
+                discussionDetailsFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, discussionDetailsFragment).addToBackStack(null).commit();
+
+            }
+        };
+    }
+
+    @Override
+    public void onclick(View v, int position) {
+        Log.d(TAG, "onclick: Discussion Clicked");
+    }
 }

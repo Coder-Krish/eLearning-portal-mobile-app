@@ -29,16 +29,18 @@ import retrofit2.Response;
 public class AllPostsRecyclerAdapter extends RecyclerView.Adapter<AllPostsRecyclerAdapter.AllPostsViewHolder> {
     Context context;
     ArrayList<Posts>posts;
-    public AllPostsRecyclerAdapter(Context context, ArrayList<Posts> posts){
+    private RecyclerViewAllPostsClickListener recyclerViewAllPostsClickListener;
+    public AllPostsRecyclerAdapter(Context context, ArrayList<Posts> posts, RecyclerViewAllPostsClickListener recyclerViewAllPostsClickListener){
         this.context = context;
         this.posts = posts;
+        this.recyclerViewAllPostsClickListener = recyclerViewAllPostsClickListener;
     }
 
     @NonNull
     @Override
     public AllPostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_all_posts, parent, false);
-        AllPostsRecyclerAdapter.AllPostsViewHolder allPostsViewHolder = new AllPostsRecyclerAdapter.AllPostsViewHolder(view);
+        AllPostsRecyclerAdapter.AllPostsViewHolder allPostsViewHolder = new AllPostsRecyclerAdapter.AllPostsViewHolder(view, recyclerViewAllPostsClickListener);
         return allPostsViewHolder;
     }
 
@@ -88,6 +90,7 @@ public class AllPostsRecyclerAdapter extends RecyclerView.Adapter<AllPostsRecycl
             }
         });
 
+
         ItemAnimation.animateFadeIn(holder.itemView, position);
         }
 
@@ -96,15 +99,16 @@ public class AllPostsRecyclerAdapter extends RecyclerView.Adapter<AllPostsRecycl
         return posts.size();
     }
 
-    public class AllPostsViewHolder extends RecyclerView.ViewHolder{
+    public class AllPostsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         CardView myPostsCardView;
         TextView postedByTV;
         TextView postedDate;
         TextView content;
         ImageView contentImageView;
         ImageView userProfileImage;
+        RecyclerViewAllPostsClickListener mRecyclerViewAllPostsClickListener;
 
-        public AllPostsViewHolder(@NonNull View itemView) {
+        public AllPostsViewHolder(@NonNull View itemView, RecyclerViewAllPostsClickListener mRecyclerViewAllPostsClickListener) {
             super(itemView);
             myPostsCardView = itemView.findViewById(R.id.myPostsCardView);
             postedByTV = itemView.findViewById(R.id.postedBy);
@@ -112,9 +116,20 @@ public class AllPostsRecyclerAdapter extends RecyclerView.Adapter<AllPostsRecycl
             content = itemView.findViewById(R.id.content);
             contentImageView = itemView.findViewById(R.id.contentImage);
             userProfileImage = itemView.findViewById(R.id.userProfileImage);
+            this.mRecyclerViewAllPostsClickListener = mRecyclerViewAllPostsClickListener;
 
+            itemView.setOnClickListener(this);
 
         }
+
+        @Override
+        public void onClick(View v) {
+            mRecyclerViewAllPostsClickListener.onClick(itemView,getAdapterPosition());
+        }
+    }
+
+    public interface RecyclerViewAllPostsClickListener{
+        void onClick(View v, int position);
     }
 
 }

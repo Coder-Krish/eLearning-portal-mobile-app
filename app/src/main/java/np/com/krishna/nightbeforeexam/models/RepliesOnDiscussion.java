@@ -20,6 +20,10 @@ public class RepliesOnDiscussion {
         this.active = active;
     }
 
+    public RepliesOnDiscussion() {
+
+    }
+
     public Long getId() {
         return id;
     }

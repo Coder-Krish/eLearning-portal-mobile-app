@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/LightYellow"
+    android:id="@+id/fragment_posts_details">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fragment_container"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/cardview_dark_background"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Want To Reply Type here..."
+                android:textColorHint="@color/Snow"
+                app:boxStrokeColor="@color/Crimson"
+                app:hintTextColor="@color/Snow"
+                android:layout_margin="10dp"
+                android:id="@+id/etLayoutComment"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/comment"
+                    android:textColor="@color/Snow"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnComment"
+                    android:text="COMMENT"
+                    android:textColor="@color/Seashell"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginLeft="190dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:backgroundTint="@color/DodgerBlue"
+                    app:cornerRadius="12dp"
+                    android:layout_alignParentRight="true"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/postCreatedBy"
+                    android:textSize="15sp"
+                    android:hint="@string/app_name"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:textColor="@color/Snow"
+                    android:layout_below="@+id/btnComment"
+                    />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="180dp"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentsOnPost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                tools:layout_editor_absoluteX="8dp"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</RelativeLayout>
