@@ -116,7 +116,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         BottomNavigationView navbar=findViewById(R.id.bottom_nav_bar);
         navbar.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).addToBackStack(null).commit();
 
 
     }

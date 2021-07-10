@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/LightYellow"
+    android:id="@+id/fragment_otp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fragment_container"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewChangePassword"
+                android:text="CONFIRM OTP"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textMessage"
+                android:text="OTP has been sent to your email, check your email and verify it."
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/anotherMessage"
+                android:text="Note: After Successful validation of otp, you will get your new password in your email address, use it to login and change it immediately."
+                android:textAlignment="center"
+                android:textStyle="normal"
+                android:textColor="@color/Red"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="OTP"
+                android:textColorHint="@color/LightGrey"
+                app:boxStrokeColor="@color/Crimson"
+                app:hintTextColor="@color/Crimson"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:id="@+id/etLayoutOtp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/Black"
+                    android:id="@+id/validOtp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnVerify"
+                android:backgroundTint="@color/DeepSkyBlue"
+                android:text="Verify"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                ></com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</RelativeLayout>

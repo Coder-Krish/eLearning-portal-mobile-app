@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,13 @@
     android:background="@drawable/gradient"
     tools:context=".activities.RegisterActivity"
     android:layout_gravity="center">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
 
+        android:id="@+id/fragment_container"
+        >
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
@@ -16,23 +22,6 @@
         android:layout_height="match_parent"
 
       >
-
-
-       <!-- <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tBrandName"
-            android:text="@string/app_name"
-            android:background="@color/DodgerBlue"
-            android:textColor="@color/Seashell"
-            android:textSize="30sp"
-            android:gravity="center_horizontal"
-            android:textAlignment="center"
-            android:padding="10dp"
-            android:fontFamily="sans-serif"
-            />-->
-
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -171,7 +160,7 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+       <!-- <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -191,7 +180,38 @@
                 android:id="@+id/etProgram"
                 android:inputType="number"
                 />
+        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etLayoutPrograms"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Programs"
+            android:layout_below="@+id/etLayoutInstitution"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:textColorHint="@color/LightGrey"
+            app:boxStrokeColor="@color/Crimson"
+
+
+            >
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/etPrograms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            tools:ignore="KeyboardInaccessibleWidget"
+            android:editable="false"
+            />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -199,7 +219,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etLayoutProgram"
+            android:layout_below="@+id/etLayoutPrograms"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:hint="Phone"
@@ -295,6 +315,7 @@
             android:gravity="center_horizontal"
             android:textAlignment="center"
             android:clickable="true"
+            android:visibility="gone"
             />
 
         <androidx.core.widget.ContentLoadingProgressBar
@@ -308,10 +329,7 @@
             android:visibility="invisible"
             />
 
-
-
-
     </RelativeLayout>
+    </FrameLayout>
 
-
-</ScrollView>
+</RelativeLayout>

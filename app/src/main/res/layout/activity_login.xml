@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    app:layout_constraintHorizontal_chainStyle="packed"  
-    app:layout_constraintVertical_chainStyle="packed"
     android:layout_gravity="center"
     tools:context=".activities.LoginActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fragment_container"
         >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            >
 
 
 
@@ -41,8 +48,6 @@
                         android:layout_marginRight="30dp"
                         android:layout_below="@+id/brand_image"
                         android:id="@+id/etLayoutUsername"
-
-
                         >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -94,16 +99,6 @@
                     android:layout_below="@+id/etLayoutPassword"
                     />
 
-       <!--         <com.google.android.material.checkbox.MaterialCheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Remember Me"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:id="@+id/rememberme"
-                    android:layout_below="@+id/btnLogin"
-                    />-->
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
@@ -118,18 +113,6 @@
             />
 
 
-<!--        <com.google.android.gms.common.SignInButton
-            android:id="@+id/googlesignin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_below="@+id/forgotPassword"
-            style="@style/TextAppearance.MaterialComponents.Button"
-            android:layout_marginTop="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            />-->
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
@@ -163,6 +146,9 @@
             android:visibility="invisible"
             />
 
+
+
     </RelativeLayout>
 
-</ScrollView>
+    </FrameLayout>
+</RelativeLayout>

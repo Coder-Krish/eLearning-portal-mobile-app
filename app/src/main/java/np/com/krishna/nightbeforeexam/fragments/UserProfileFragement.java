@@ -7,12 +7,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,9 +26,12 @@ import np.com.krishna.nightbeforeexam.ApiClients.ApiClient;
 import np.com.krishna.nightbeforeexam.HelperClasses.MyAdapter;
 import np.com.krishna.nightbeforeexam.HelperClasses.ProfileAdapter;
 import np.com.krishna.nightbeforeexam.R;
+import np.com.krishna.nightbeforeexam.adapters.FollowAndFollowingRecyclerAdapter;
+import np.com.krishna.nightbeforeexam.models.Follow;
 import np.com.krishna.nightbeforeexam.models.MessageResponse;
 import np.com.krishna.nightbeforeexam.models.ProfilePicture;
 import np.com.krishna.nightbeforeexam.models.User;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,26 +42,29 @@ public class UserProfileFragement extends Fragment {
 
     private TextView loggedInUserNameTV;
     private TextView fullname,followerTV,followingTV;
-    // private TextView loadUploadDirTV;
+
+    private Button btnFollow;
     private ImageView profilePicDisplay;
-    //private String imgUrl;
     private String token;
     private Long userId;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    private ArrayList<User> userArrayList;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
+        userArrayList = new ArrayList<>();
         loggedInUserNameTV = v.findViewById(R.id.username);
         fullname = v.findViewById(R.id.fullname);
    /*     followerTV = v.findViewById(R.id.followerCount);
         followingTV = v.findViewById(R.id.followingCount);*/
         profilePicDisplay = v.findViewById(R.id.profilePicture);
-
+        btnFollow = v.findViewById(R.id.btnFollow);
         tabLayout = v.findViewById(R.id.tabLayout);
         viewPager = v.findViewById(R.id.viewPager);
 
@@ -126,51 +136,69 @@ public class UserProfileFragement extends Fragment {
 
         /*tab layout ends*/
 
-    /*    countFollower(userId);
-        countFollowing(userId);*/
+        checkFollowStatus(userId);
+
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Call<ResponseBody> call1 = ApiClient.getFollowServices().followUser(token, userId);
+                call1.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if(response.isSuccessful()){
+                            Log.d(TAG, "onResponse: Followed");
+                            btnFollow.setVisibility(View.GONE);
+                        }else{
+                            Log.d(TAG, "onResponse: Sorry something is wrong");
+                            btnFollow.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.d(TAG, "onFailure: Sorry cannot connect to the server");
+                    }
+                });
+
+            }
+        });
+
         return v;
     }
 
- /*   void countFollower(Long userId){
+    private void checkFollowStatus(Long userId) {
+
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         String token = sharedPreferences.getString("token","");
-        Call<MessageResponse> followerCountCall = ApiClient.getProfileService().countFollowers(token,userId);
-        followerCountCall.enqueue(new Callback<MessageResponse>() {
+
+        Call<List<User>> call = ApiClient.getFollowServices().getFollowing(token);
+        call.enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if(response.isSuccessful()){
 
-                    followerTV.setText(response.body().getMessage());
+                    userArrayList = new ArrayList<>(response.body());
+                    Log.d(TAG, "onResponse: inside check follow status");
+                    for(int i = 0; i < userArrayList.size(); i++){
+                        if(userId == userArrayList.get(i).getId()){
+                            Log.d(TAG, "onResponse: inside if condition");
+                             btnFollow.setVisibility(View.GONE);
+                        }
+                    }
+
                 }else{
-                    followerTV.setText("0 Follower");
+                    Log.d(TAG, "onResponse: Something is wrong");
                 }
             }
 
             @Override
-            public void onFailure(Call<MessageResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Failure: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<User>> call, Throwable t) {
+                Log.d(TAG, "onFailure: Failure");
             }
         });
+
 
     }
-    void countFollowing(Long userId){
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString("token","");
-        Call<MessageResponse> followingCountCall = ApiClient.getProfileService().countFollowing(token,userId);
-        followingCountCall.enqueue(new Callback<MessageResponse>() {
-            @Override
-            public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
-                if(response.isSuccessful()){
-                    followingTV.setText(response.body().getMessage());
-                }else{
-                    followingTV.setText("0 Follower");
-                }
-            }
 
-            @Override
-            public void onFailure(Call<MessageResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Failure: "+t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }*/
 }

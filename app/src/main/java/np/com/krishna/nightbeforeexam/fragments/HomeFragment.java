@@ -265,7 +265,7 @@ public class HomeFragment extends Fragment implements AllPostsRecyclerAdapter.Re
 
                     @Override
                     public void onFailure(Call<List<Posts>> call, Throwable t) {
-                        Toast.makeText(getContext(), "Failure: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "onFailure: Sorry cannot connect to the server "+t.getMessage());
                     }
                 });
 

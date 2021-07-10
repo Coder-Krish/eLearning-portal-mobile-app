@@ -5,16 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import np.com.krishna.nightbeforeexam.ApiClients.ApiClient;
 import np.com.krishna.nightbeforeexam.HelperClasses.SharedPrefManager;
 import np.com.krishna.nightbeforeexam.R;
+import np.com.krishna.nightbeforeexam.fragments.EmailVerificationFragment;
+import np.com.krishna.nightbeforeexam.fragments.ForgotPasswordFragment;
 import np.com.krishna.nightbeforeexam.interfaces.AuthenticationApiInterface;
 import np.com.krishna.nightbeforeexam.models.LoginRequest;
-import np.com.krishna.nightbeforeexam.models.LoginResponse;
 import np.com.krishna.nightbeforeexam.models.Programs;
 import np.com.krishna.nightbeforeexam.models.User;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Tag;
 
 
 import android.content.Context;
@@ -23,30 +22,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    private TextView forgotPassword;
     private static String token;
 
     private static String username;
@@ -82,6 +69,15 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        forgotPassword = findViewById(R.id.forgotPassword);
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              ForgotPasswordFragment forgotPasswordFragment = new ForgotPasswordFragment();
+              getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,forgotPasswordFragment).addToBackStack(null).commit();
+            }
+        });
 
 
         //registration
@@ -129,45 +125,62 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if(response.isSuccessful()){
-                            User loginResponse = response.body();
-                            token = "Bearer"+" "+loginResponse.getToken();
-                            username = loginResponse.getUsername();
-                            userEmail = loginResponse.getEmail();
-                            id = loginResponse.getId();
-                            fullName = loginResponse.getFullname();
-                            Programs programs = loginResponse.getCourseDetail();
-                            programId = programs.getId();
-                            programName = programs.getProgramName();
-
-                            //Log.d(TAG, "onResponse: "+loginResponse.getCourseDetail().toString());
-
-                            SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("token", token);
-                            editor.putString("username", username);
-                            editor.putString("email", userEmail);
-                            editor.putLong("id", id);
-                            editor.putString("fullname", fullName);
-                           // editor.putLong("programId",programId);
-                            editor.putLong("programId",programId);
-                            editor.putString("programName",programName);
-
-                            editor.commit();
-
                                     if (response.code() == 200) {
 
-                                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
-                                        startHomeActivity();
+                                        User loginResponse = response.body();
+                                        if(loginResponse.getMessage() == null) {
+                                            token = "Bearer" + " " + loginResponse.getToken();
+                                            username = loginResponse.getUsername();
+                                            userEmail = loginResponse.getEmail();
+                                            id = loginResponse.getId();
+                                            fullName = loginResponse.getFullname();
+                                            Programs programs = loginResponse.getCourseDetail();
+                                            programId = programs.getId();
+                                            programName = programs.getProgramName();
 
-                                    }else{
-                                        Toast.makeText(LoginActivity.this, "Some Error occured", Toast.LENGTH_SHORT).show();
+                                            //Log.d(TAG, "onResponse: "+loginResponse.getCourseDetail().toString());
+
+                                            SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("token", token);
+                                            editor.putString("username", username);
+                                            editor.putString("email", userEmail);
+                                            editor.putLong("id", id);
+                                            editor.putString("fullname", fullName);
+                                            // editor.putLong("programId",programId);
+                                            editor.putLong("programId", programId);
+                                            editor.putString("programName", programName);
+
+                                            editor.commit();
+
+                                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
+                                            startHomeActivity();
+                                        }else{
+                                            Toast.makeText(LoginActivity.this, "You need to verify your email", Toast.LENGTH_SHORT).show();
+
+                                            EmailVerificationFragment emailVerificationFragment = new EmailVerificationFragment();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("username",email);
+                                            emailVerificationFragment.setArguments(bundle);
+                                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,emailVerificationFragment).addToBackStack(null).commit();
+
+                                        }
+
+
                                     }
+                                   /* else if(response.body().getMessage().equals("Verify your email first")){
+                                        Toast.makeText(LoginActivity.this, "You need to verify your email", Toast.LENGTH_SHORT).show();
 
+                                        EmailVerificationFragment emailVerificationFragment = new EmailVerificationFragment();
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("username",email);
+                                        emailVerificationFragment.setArguments(bundle);
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,emailVerificationFragment).addToBackStack(null).commit();
 
-
+                                    }*/
 
                         }else{
-                            Toast.makeText(LoginActivity.this,"Login Failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"Login Credentials do not match ", Toast.LENGTH_LONG).show();
 
                         }
                     }

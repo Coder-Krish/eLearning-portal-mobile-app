@@ -10,6 +10,7 @@ public class SignupRequest {
     private String institution;
     private String course;
     private Long programId;
+    private String programName;
     private String gender;
     private String address;
 
@@ -75,6 +76,14 @@ public class SignupRequest {
 
     public void setProgramId(Long programId) {
         this.programId = programId;
+    }
+
+    public String getProgramName() {
+        return programName;
+    }
+
+    public void setProgramName(String programName) {
+        this.programName = programName;
     }
 
     public void setInstitution(String institution) {

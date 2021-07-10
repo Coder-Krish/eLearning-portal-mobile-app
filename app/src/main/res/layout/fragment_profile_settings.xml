@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightYellow"
+    android:id="@+id/fragment_profile_settings"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fragment_container"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileSettingsTitle"
+                android:text="PROFILE SETTINGS"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/addProfilePicture"
+                android:text="Add Profile Picture"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="5dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/changeProfilePicture"
+                android:text="Change Profile Picture"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewProfileDetails"
+                android:text="View Profile Details"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/updateProfileDetails"
+                android:text="Change Profile Details"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string name="app_name">Night B4 Exam</string>
 
     <string name="forgot_password"> <u>Forgot Password</u>.</string>
@@ -8,12 +8,27 @@
     <string name="close">Close</string>
 
     <string name="options">⋮</string>
+    <string name="search" android:icon="@drawable/search"></string>
 
     <string-array name="gender">
 
         <item>Male</item>
         <item>Female</item>
         <item>Other</item>
+    </string-array>
+
+    <string-array name="programs">
+
+        <item>BE Computer</item>
+        <item>BE Civil</item>
+        <item>Bachelor of Computer Application</item>
+        <item>Bachelor Of Business Administration</item>
+
+        <item>Electronic And Communication Engineering</item>
+
+        <item>Electrical Engineering</item>
+
+       <item> Bachelor of Business Studies</item>
     </string-array>
 
     <string-array name="semesters">

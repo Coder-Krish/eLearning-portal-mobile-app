@@ -32,6 +32,7 @@ public class User implements Parcelable {
     private List<DiscussionForum>discussion=new ArrayList<>();
     private ProfilePicture profile;
     private String token;
+    private String message;
 
     public User(String fullname, String username, String email, String password, Long phone, String institution, String gender, String address, boolean active, boolean isEnabled,  Programs courseDetail, List<Posts> post, List<DiscussionForum> discussion, ProfilePicture profile, String token) {
         this.fullname = fullname;
@@ -88,6 +89,10 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
+
+    public User() {
+
+    }
 
     public Long getId() {
         return id;
@@ -223,6 +228,14 @@ public class User implements Parcelable {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override

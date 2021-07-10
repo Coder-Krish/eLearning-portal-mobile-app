@@ -71,37 +71,18 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/Black"/>
-                <RelativeLayout
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:id="@+id/btnFollow"
+                    android:text="Follow"
+                    android:textColor="@color/Snow"
+                    android:textSize="15sp"
+                    android:backgroundTint="@color/colorAccent"
+                    ></com.google.android.material.button.MaterialButton>
 
-                   <!-- <TextView
-                        android:id="@+id/followerCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="\@follower"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/Black"
-                        android:gravity="center_horizontal"/>
-                    <TextView
-                        android:id="@+id/followingCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="\@following"
-                        android:paddingLeft="10dp"
-                        android:paddingBottom="10dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/Black"
-                        android:layout_toRightOf="@+id/followerCount"
-                        android:gravity="center_horizontal"/>-->
 
-                </RelativeLayout>
+
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
