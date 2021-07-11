@@ -5,11 +5,12 @@
     android:background="@color/LightYellow"
     android:id="@+id/fragment_profile_settings"
     >
-    <FrameLayout
-        android:layout_width="match_parent"
+     <FrameLayout
+       android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_nav_bar"
         android:layout_below="@+id/toolbar"
+         android:clickable="true"
         android:id="@+id/fragment_container"
         >
         <LinearLayout

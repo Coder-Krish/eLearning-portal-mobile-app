@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Snow"
+    android:id="@+id/fragment_profile_details_view">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_below="@+id/toolbar"
+        android:clickable="true"
+        android:id="@+id/fragment_container"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileDetailsViewTitle"
+                android:text="PROFILE DETAILS"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                />
+
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewUsername"
+                android:text="Username: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/profileDetailsViewTitle"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayUsername"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/profileDetailsViewTitle"
+                android:layout_toRightOf="@+id/viewUsername"
+                />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewFullName"
+                android:text="Fullname: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewUsername"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayFullName"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewUsername"
+                android:layout_toRightOf="@+id/viewFullName"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewEmail"
+                android:text="Email: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@id/viewFullName"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayEmail"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewFullName"
+                android:layout_toRightOf="@+id/viewEmail"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewPhone"
+                android:text="Phone: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewEmail"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayPhone"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewEmail"
+                android:layout_toRightOf="@+id/viewPhone"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewProgram"
+                android:text="Program: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewPhone"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayProgram"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewPhone"
+                android:layout_toRightOf="@+id/viewProgram"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewInstitution"
+                android:text="Institution: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewProgram"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayInstitution"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewProgram"
+                android:layout_toRightOf="@+id/viewInstitution"
+                />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewAddress"
+                android:text="Address: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewInstitution"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayAddress"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewInstitution"
+                android:layout_toRightOf="@+id/viewAddress"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewGender"
+                android:text="Gender: "
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewAddress"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/displayGender"
+                android:text="@string/app_name"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"
+                android:background="@color/LightGrey"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/viewAddress"
+                android:layout_toRightOf="@+id/viewGender"
+                />
+
+
+
+
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

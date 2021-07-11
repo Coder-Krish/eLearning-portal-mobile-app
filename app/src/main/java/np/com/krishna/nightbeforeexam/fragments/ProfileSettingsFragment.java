@@ -116,7 +116,14 @@ public class ProfileSettingsFragment extends Fragment {
         textViewProfileDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ForgotPasswordFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileDetailsViewFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        textViewChangeProfileDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileDetailsChangeFragment()).addToBackStack(null).commit();
             }
         });
 

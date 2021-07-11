@@ -12,10 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_nav_bar"
-
+        android:clickable="true"
         android:id="@+id/fragment_container"
         >
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        >
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
@@ -159,30 +163,6 @@
                 android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
-
-       <!-- <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Program"
-            android:textColorHint="@color/LightGrey"
-            app:boxStrokeColor="@color/Crimson"
-            app:hintTextColor="@color/Crimson"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:id="@+id/etLayoutProgram"
-            android:layout_below="@+id/etLayoutInstitution"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etProgram"
-                android:inputType="number"
-                />
-        </com.google.android.material.textfield.TextInputLayout>-->
-
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etLayoutPrograms"
@@ -330,6 +310,7 @@
             />
 
     </RelativeLayout>
+        </ScrollView>
     </FrameLayout>
 
 </RelativeLayout>
